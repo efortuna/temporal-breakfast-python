@@ -1,7 +1,6 @@
-# @@@SNIPSTART python-project-template-run-workflow
 import asyncio
 
-from run_worker import SayHello
+from run_worker import BreakfastWorkflow
 from temporalio.client import Client
 
 
@@ -11,7 +10,7 @@ async def main():
 
     # Execute a workflow
     result = await client.execute_workflow(
-        SayHello.run, "Temporal", id="hello-workflow", task_queue="hello-task-queue"
+        BreakfastWorkflow.run, id="breakfast-workflow", task_queue="breakfast-queue"
     )
 
     print(f"Result: {result}")
@@ -19,4 +18,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-# @@@SNIPEND
